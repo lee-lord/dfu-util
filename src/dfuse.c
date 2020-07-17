@@ -248,7 +248,7 @@ int dfuse_special_command(struct dfu_if *dif, unsigned int address,
 		/* wait while command is executed */
 		if (verbose)
 			printf("   Poll timeout %i ms\n", dst.bwPollTimeout);
-		if (dst.bState == DFU_STATE_dfuDNBUSY)
+		if ((dst.bState == DFU_STATE_dfuDNBUSY) && (command != SET_ADDRESS))
 			milli_sleep(dst.bwPollTimeout);
 		if (command == READ_UNPROTECT)
 			return ret;
